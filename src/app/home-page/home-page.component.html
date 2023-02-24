@@ -5,6 +5,8 @@
             <th scope="col">Customer ID</th>
             <th scope="col">Name</th>
             <th scope="col">Twitter</th>
+            <th scope="col">Github</th>
+            <th scope="col">Article Published</th>
             <th scope="col">Location</th>
             <th scope="col">Delete</th>
           </tr>
@@ -14,9 +16,65 @@
             <th scope="row">{{ customer.id }}</th>
             <td>{{ customer.name }}</td>
             <td>{{ customer.twitter }}</td>
+            <td>{{ customer.github }}</td>
+            <td>{{ customer.latest_article_published }}</td>
             <td>{{ customer.location }}</td>
-            <td><button type="button" (click)="deleteCustomers(customer.id)">Delete</button></td>            
+            <td><button class="btn btn-danger" (click)="deletCustomer(customer.id)">Delete</button></td>
+            <td><button class="btn btn-info" [routerLink]="['update', customer.id]">Edit</button></td>         
           </tr>
         </tbody>
       </table>
+
+      <hr>
+      <div class="container">
+        <form [formGroup]="form" (ngSubmit)="submitCustomer()">
+          <div class="form-group input-group-lg">
+            <input class="form-control" placeholder="Email" formControlName="email">
+          </div>
+          <div class="form-group input-group-lg">
+            <input class="form-control" placeholder="Name" formControlName="name">
+          </div>
+          <div class="form-group input-group-lg">
+            <input class="form-control" placeholder="Twitter" formControlName="twitter">
+          </div>
+          <div class="form-group input-group-lg">
+            <input class="form-control" placeholder="Github" formControlName="github">
+          </div>
+          <div class="form-group input-group-lg">
+            <input class="form-control" placeholder="latest_article_published" formControlName="latest_article_published">
+          </div>
+          <div class="form-group input-group-lg">
+            <input class="form-control" placeholder="Location" formControlName="location">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success btn-block btn-lg">Add Customer</button>
+          </div>
+        </form>
+      </div>
+      <hr>
+      <!-- <div class="container">
+        <form [formGroup]="updateForm" (ngSubmit)="updateCustomer()">
+          <div class="form-group input-group-lg">
+            <input class="form-control" placeholder="Email" formControlName="email">
+          </div>
+          <div class="form-group input-group-lg">
+            <input class="form-control" placeholder="Name" formControlName="name">
+          </div>
+          <div class="form-group input-group-lg">
+            <input class="form-control" placeholder="Twitter" formControlName="twitter">
+          </div>
+          <div class="form-group input-group-lg">
+            <input class="form-control" placeholder="Github" formControlName="github">
+          </div>
+          <div class="form-group input-group-lg">
+            <input class="form-control" placeholder="latest_article_published" formControlName="latest_article_published">
+          </div>
+          <div class="form-group input-group-lg">
+            <input class="form-control" placeholder="Location" formControlName="location">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-danger btn-block btn-lg">Submit</button>
+          </div>
+        </form>
+      </div> -->
 </body>
