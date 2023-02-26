@@ -3,6 +3,7 @@ import { PostService } from '../post/post.service';
 import { HttpClient } from '@angular/common/http';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserServiceService } from '../user/user-service.service';
 
 @Component({
   selector: 'app-home-page',
@@ -12,9 +13,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class HomePageComponent implements OnInit {
   entries!: any;
   form!: FormGroup;
+  data!: any;
 
   
-  constructor(private http: HttpClient, public service: PostService,private router: Router, private fb: FormBuilder, private actRoute: ActivatedRoute) { }
+  constructor(private http: HttpClient, public service: PostService,
+    private router: Router, private fb: FormBuilder, private actRoute: ActivatedRoute,
+    private userService: UserServiceService
+    ) { }
 
   customers: any[] = [];
 
@@ -40,7 +45,7 @@ export class HomePageComponent implements OnInit {
     formData.append('latest_article_published', this.form.get('latest_article_published')?.value);
     formData.append('location', this.form.get('location')?.value);
 
-    // this.http.post('http://localhost:8001/api/customers', formData)
+    this.http.post('http://localhost:8001/api/customers', formData)
     this.service.postCustomer(formData)
     .subscribe({
       next: (res) => {
@@ -71,5 +76,11 @@ export class HomePageComponent implements OnInit {
       // this.router.navigate(['']);
       // this.router.navigateByUrl('/login', {skipLocationChange: true}).then(() => this.router.navigate(['']));
     }
+  }
+
+  logOut(data: any){
+    this.userService.logOutUser(data);
+    localStorage.removeItem('token');
+    this.router.navigate(['']);
   }
 }

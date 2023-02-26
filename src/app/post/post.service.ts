@@ -23,7 +23,6 @@ export class PostService {
 
   postCustomer(formData: any){
     return this.httpClient.post('http://localhost:8001/api/customers', formData);
-
   }
 
   deletCustomer(id: number): Observable<any>{

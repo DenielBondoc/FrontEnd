@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { ActivatedRoute, Router } from '@angular/router';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../post/post.service';
 
@@ -56,6 +58,7 @@ export class UpdateComponent implements OnInit {
       next: (res) => {
         alert('Customer Updated!');
         this.entries = this.loadCustomers();
+        this.router.navigate(['home']);
       },
       error: console.log,
     })
