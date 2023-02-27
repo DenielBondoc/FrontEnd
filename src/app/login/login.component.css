@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+
+#clone_container{
+    display: flex;
+    justify-content: center;
+    padding-top: 300px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.border1{
+    background-color: #a1a1a1a1;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.form-group{
+    margin-bottom: 10px;
+}
+
+.inside{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+

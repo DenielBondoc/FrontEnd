@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
       email : ['', Validators.email],
       password : ['', Validators.required],
     })
+
   }
   
     loginObj: any = {
@@ -28,10 +29,15 @@ export class LoginComponent implements OnInit {
     };
   
     loginUser(){
+
+      if(this.loginObj.email == '' || this.loginObj.password == ''){
+        alert('Input fields are empty')
+        return;
+      }
+
       this.service.logInCustomer(this.loginObj).subscribe({
         next: (res) => {
           localStorage.setItem('token',JSON.stringify(res.token));
-
           this.redirect();
         },
         error: console.log,
@@ -40,5 +46,10 @@ export class LoginComponent implements OnInit {
 
     redirect(){
       this.router.navigate(['home']);
+    }
+
+    redirectToRegister(){
+      this.router.navigate(['register']);
+
     }
 }

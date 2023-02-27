@@ -1,4 +1,6 @@
 <body>
+  <div class="table1">
+
     <table class="table">
         <thead>
           <tr>
@@ -29,29 +31,34 @@
       <div class="container">
         <form [formGroup]="form" (ngSubmit)="submitCustomer()">
           <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Email" formControlName="email">
+            <input class="form-control" placeholder="Email" formControlName="email" [(ngModel)]="formObj.email">
           </div>
           <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Name" formControlName="name">
+            <input class="form-control" placeholder="Name" formControlName="name" [(ngModel)]="formObj.name">
           </div>
           <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Twitter" formControlName="twitter">
+            <input class="form-control" placeholder="Twitter" formControlName="twitter" [(ngModel)]="formObj.twitter">
           </div>
           <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Github" formControlName="github">
+            <input class="form-control" placeholder="Github" formControlName="github" [(ngModel)]="formObj.github">
           </div>
           <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="latest_article_published" formControlName="latest_article_published">
+            <input class="form-control" placeholder="Latest article published" formControlName="latest_article_published" [(ngModel)]="formObj.latest_article_published">
           </div>
           <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Location" formControlName="location">
+            <input class="form-control" placeholder="Location" formControlName="location" [(ngModel)]="formObj.location">
           </div>
           <div class="form-group">
-            <button class="btn btn-success btn-block btn-lg">Add Customer</button>
-            <button (click)="logOut(data)" class="btn btn-success btn-block btn-lg">Log out</button>
+            <div class="Add">
+              <button class="btn btn-success btn-block btn-lg">Add Customer</button>
+            </div>
+            <div class="Logout">
+              <button (click)="logOut(data)" class="btn btn-success btn-block btn-lg">Log out</button>
+            </div>
           </div>
         </form>
       </div>
+  </div>
       <hr>
       <!-- <div class="container">
         <form [formGroup]="updateForm" (ngSubmit)="updateCustomer()">

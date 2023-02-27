@@ -1,19 +1,22 @@
 <div class="container">
     <form [formGroup]="formGroup" (ngSubmit)="registerCustomer()">
       <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="Email" formControlName="email">
+        <input class="form-control" placeholder="Email" formControlName="email" [(ngModel)]="regObj.email">
       </div>
       <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="name" formControlName="name">
+        <input class="form-control" placeholder="name" formControlName="name" [(ngModel)]="regObj.name">
       </div>
       <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="password" formControlName="password">
+        <input class="form-control" placeholder="password" formControlName="password" [(ngModel)]="regObj.password">
       </div>
       <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="cpassword" formControlName="cpassword">
+        <input class="form-control" placeholder="cpassword" formControlName="cpassword" [(ngModel)]="regObj.cpassword">
       </div>
       <div class="form-group">
         <button class="btn btn-success btn-block btn-lg">Add User</button>
+        <div class="goBack">
+          <button (click)="goBack()" class="btn btn-success btn-block btn-lg">Back</button>
+        </div>
       </div>
     </form>
   </div>

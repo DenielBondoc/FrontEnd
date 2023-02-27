@@ -29,13 +29,26 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  regObj: any = {
+    email: '',
+    password: '',
+    name: '',
+    cpassword: '',
+  };
+
   registerCustomer(){
+    if(this.regObj.email == '' ||this.regObj.name == '' ||this.regObj.password == '' ||this.regObj.cpassword == ''){
+      alert('Input fields are empty')
+      return;
+    }
+
     var formData: any = new FormData();
     formData.append('email', this.formGroup.get('email')?.value);
     formData.append('name', this.formGroup.get('name')?.value);
     formData.append('password', this.formGroup.get('password')?.value);
 
     this.httpClient.post('http://localhost:8001/auth/register-user', formData)
+
     this.service.registerCustomer(formData)
     .subscribe({
       next: (res) => {
@@ -52,5 +65,9 @@ export class RegisterComponent implements OnInit {
     .subscribe((users: any) => {
       this.Users = users;
     });
+  }
+
+  goBack(){
+    this.router.navigate(['home'])
   }
 }

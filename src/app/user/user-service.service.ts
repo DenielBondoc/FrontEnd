@@ -25,4 +25,5 @@ export class UserServiceService {
     return this.httpcClient.post('http://localhost:8001/auth/login', data)
   }
   
+  
 }

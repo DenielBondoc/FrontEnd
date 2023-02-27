@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+.form-group{
+    margin-bottom: 10px;
+    margin-right: 300px;
+    margin-left: 300px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.container{
+    padding-top: 100px;
+}
+
+.backButton{
+    margin-top: 10px;
+}

@@ -1,13 +1,23 @@
-<div class="container">
-    <form [formGroup]="formGroup" (ngSubmit)="loginUser()">
-      <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="Email" formControlName="email" [(ngModel)]="loginObj.email">
+<body>
+  <div class="container" id="clone_container">
+      <div class="border1">
+        <form [formGroup]="formGroup" (ngSubmit)="loginUser()">
+          <div class="form-group input-group-lg">
+            <input type="email" class="form-control" placeholder="Email" formControlName="email" [(ngModel)]="loginObj.email" required>
+          </div>
+          <div class="form-group input-group-lg">
+            <input type="password" class="form-control" placeholder="password" formControlName="password" [(ngModel)]="loginObj.password" required>
+          </div>
+          <div class="form-group">
+            <div class="inside">
+              <button (click)="loginUser()" class="btn btn-success btn-block btn-lg">Login</button>
+              <div class="registers">
+                <button (click)="redirectToRegister()" class="btn btn-success btn-block btn-lg">Register</button>
+              </div>
+            </div>
+
+          </div>
+        </form>
       </div>
-      <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="password" formControlName="password" [(ngModel)]="loginObj.password">
-      </div>
-      <div class="form-group">
-        <button (click)="loginUser()" class="btn btn-success btn-block btn-lg">Login</button>
-      </div>
-    </form>
-  </div>
+    </div>
+</body>

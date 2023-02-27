@@ -15,6 +15,17 @@ export class HomePageComponent implements OnInit {
   form!: FormGroup;
   data!: any;
 
+
+  formObj: any = {
+    name : '',
+    email : '',
+    twitter : '',
+    github: '',
+    latest_article_published: '',
+    location: ''
+  };
+
+
   
   constructor(private http: HttpClient, public service: PostService,
     private router: Router, private fb: FormBuilder, private actRoute: ActivatedRoute,
@@ -37,6 +48,16 @@ export class HomePageComponent implements OnInit {
   }
 
   submitCustomer() {
+    if(this.formObj.email == '' ||
+    this.formObj.email == '' ||
+    this.formObj.email == '' ||
+    this.formObj.email == '' ||
+    this.formObj.email == '' ||
+    this.formObj.email == ''){
+      alert('Input fields are empty')
+      return;
+    }
+
     var formData: any = new FormData();
     formData.append('email', this.form.get('email')?.value);
     formData.append('name', this.form.get('name')?.value);

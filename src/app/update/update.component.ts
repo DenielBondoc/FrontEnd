@@ -63,4 +63,8 @@ export class UpdateComponent implements OnInit {
       error: console.log,
     })
   }
+
+  goBack(){
+    this.router.navigate(['home'])
+  }
 }

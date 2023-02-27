@@ -18,7 +18,6 @@ export class IsAuthenticatedGuard implements CanActivate {
     return this.auth.isLoggedIn$.pipe(
       tap(isLoggedIn =>
         {
-
           if(!isLoggedIn){
             this.router.navigate(['']);
           }

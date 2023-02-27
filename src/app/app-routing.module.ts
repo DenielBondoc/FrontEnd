@@ -5,16 +5,14 @@ import { DummyComponent } from './dummy/dummy.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { IsAuthenticatedGuard } from './is-authenticated.guard';
 import { LoginComponent } from './login/login.component';
-import { PreventLoginGuard } from './prevent-login.guard';
 import { RegisterComponent } from './register/register.component';
+import { SampleGuard } from './sample.guard';
 import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
-    // canActivate: [IsAuthenticatedGuard]
-    // canActivate: [PreventLoginGuard]
   },
   {
     path: 'home',
@@ -24,7 +22,6 @@ const routes: Routes = [
   // {
   //   path: 'login',
   //   component: LoginComponent,
-  //   // canActivate: [PreventLoginGuard]
   // },
   {
     path: 'home/update/:id',
@@ -34,7 +31,6 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
-    // canActivate: [PreventLoginGuard]
   },
   {
     path: 'dummy',
