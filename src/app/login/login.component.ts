@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   
   ngOnInit(): void {
     this.formGroup = this.fb.group({
-      email : ['', Validators.email],
+      email : ['', Validators.required],
       password : ['', Validators.required],
     })
 
@@ -36,11 +36,13 @@ export class LoginComponent implements OnInit {
       }
 
       this.service.logInCustomer(this.loginObj).subscribe({
-        next: (res) => {
-          localStorage.setItem('token',JSON.stringify(res.token));
-          this.redirect();
+        next: (res: any) => {
+          localStorage.setItem('token',JSON.stringify(res.token.original.token));
+          this.router.navigate(['home']);
         },
-        error: console.log,
+        error: (err) => {
+          alert('User does not exist');
+        }
       })
     }
 
@@ -50,6 +52,5 @@ export class LoginComponent implements OnInit {
 
     redirectToRegister(){
       this.router.navigate(['register']);
-
     }
 }

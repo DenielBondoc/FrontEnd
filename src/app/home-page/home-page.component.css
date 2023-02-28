@@ -22,3 +22,19 @@
 .Add{
     margin-bottom: 10px;
 }
+
+.current_user{
+    background-color: rgba(240, 248, 255, 0.651);
+    position: absolute;
+    margin-top: 600px;
+    margin-left: 100px;
+    padding: 20px;
+    border-radius: 30px;
+    font-family: 'Ubuntu', sans-serif;
+
+}
+
+.title h1{
+    font-family: 'Ubuntu', sans-serif;
+
+}

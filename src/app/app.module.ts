@@ -5,16 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './home-page/home-page.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpHeaders } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { PostService } from './post/post.service';
 import { UpdateComponent } from './update/update.component';
 import { RegisterComponent } from './register/register.component';
-import { CustomInterceptor } from './interceptor/custom.interceptor';
 import { DummyComponent } from './dummy/dummy.component';
 
 
@@ -36,14 +35,11 @@ import { DummyComponent } from './dummy/dummy.component';
     MatTableModule,
     RouterModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+
   ],
-  providers: [PostService,
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: CustomInterceptor,
-    multi: true
-  }],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

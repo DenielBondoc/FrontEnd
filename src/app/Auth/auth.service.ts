@@ -12,6 +12,7 @@ export class AuthService {
   constructor(private service: UserServiceService) {
     const token = localStorage.getItem('token');
     this._isLoggedIn$.next(!!token);
+    
    }
 
    login(formData: any){
@@ -21,5 +22,9 @@ export class AuthService {
         localStorage.setItem('token', res.token)
       })
     )
+   }
+
+   isLoggedIn(){
+    return localStorage.getItem('token') !== null;
    }
 }

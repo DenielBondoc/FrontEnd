@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post/post.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserServiceService } from '../user/user-service.service';
@@ -14,7 +14,7 @@ export class HomePageComponent implements OnInit {
   entries!: any;
   form!: FormGroup;
   data!: any;
-
+  userMe: any=[];
 
   formObj: any = {
     name : '',
@@ -24,8 +24,6 @@ export class HomePageComponent implements OnInit {
     latest_article_published: '',
     location: ''
   };
-
-
   
   constructor(private http: HttpClient, public service: PostService,
     private router: Router, private fb: FormBuilder, private actRoute: ActivatedRoute,
@@ -45,7 +43,19 @@ export class HomePageComponent implements OnInit {
       latest_article_published: ['', Validators.required],
       location: ['', Validators.required]
     });
+
+    // console.log(JSON.parse(localStorage.getItem('token')!));
+    // let token = JSON.parse(localStorage.getItem('token')!);
+    // const headers = new HttpHeaders({
+    //   'Authorization': `Bearer ${token}`
+    // });
+    this.userService.me().subscribe((data: any) =>{
+      this.userMe = data;
+    } )
+
   }
+
+  
 
   submitCustomer() {
     if(this.formObj.email == '' ||

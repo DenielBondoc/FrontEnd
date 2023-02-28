@@ -15,11 +15,12 @@ export class SampleGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(localStorage.getItem('token') != null){
+      if (this.auth.isLoggedIn()) {
         this.router.navigate(['home']);
         return false;
+      } else {
+        return true;
       }
-    return true;
   }
   
 }

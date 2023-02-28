@@ -13,6 +13,7 @@ const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
+    canActivate: [SampleGuard]
   },
   {
     path: 'home',
@@ -31,11 +32,13 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [SampleGuard]
+
   },
-  {
-    path: 'dummy',
-    component: DummyComponent,
-  },
+  // {
+  //   path: 'dummy',
+  //   component: DummyComponent,
+  // },
 ];
 
 @NgModule({
