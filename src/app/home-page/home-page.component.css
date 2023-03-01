@@ -16,7 +16,7 @@
     margin-bottom: 10px;
     margin-right: 300px;
     margin-left: 300px;
-
+    width: 700px;
 }
 
 .Add{
@@ -36,5 +36,23 @@
 
 .title h1{
     font-family: 'Ubuntu', sans-serif;
+}
 
+.insiedContainer{
+    width: 500px;
+    position: absolute;
+    background-color: rgba(240, 248, 255, 0.651);
+    margin-top: 400px;
+    padding: 15px;
+    border-radius: 30px;
+}
+
+.container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.forms{
+    width: 470px;
 }

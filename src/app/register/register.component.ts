@@ -9,6 +9,7 @@ import { UserServiceService } from '../user/user-service.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
 
   userEntries!: any;
@@ -25,7 +26,7 @@ export class RegisterComponent implements OnInit {
       email : ['', Validators.email],
       name : ['', Validators.required],
       password : ['', Validators.required],
-      cpassword : ['', Validators.required],
+      password_confirmation : ['', Validators.required],
     })
   }
 
@@ -46,8 +47,7 @@ export class RegisterComponent implements OnInit {
     formData.append('email', this.formGroup.get('email')?.value);
     formData.append('name', this.formGroup.get('name')?.value);
     formData.append('password', this.formGroup.get('password')?.value);
-
-    this.httpClient.post('http://localhost:8001/auth/register-user', formData)
+    formData.append('password_confirmation', this.formGroup.get('password_confirmation')?.value);
 
     this.service.registerCustomer(formData)
     .subscribe({
@@ -56,7 +56,9 @@ export class RegisterComponent implements OnInit {
         this.userEntries = this.loadUsers();
         this.router.navigate([''])
       },
-      error: console.log,
+      error: (err) => {
+        alert('Error creating new user..');
+      }
     })
   }
 

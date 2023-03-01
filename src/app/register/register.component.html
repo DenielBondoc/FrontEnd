@@ -1,7 +1,7 @@
 <div class="container">
     <form [formGroup]="formGroup" (ngSubmit)="registerCustomer()">
       <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="Email" formControlName="email" [(ngModel)]="regObj.email">
+        <input type="email" class="form-control" placeholder="Email" formControlName="email" [(ngModel)]="regObj.email">
       </div>
       <div class="form-group input-group-lg">
         <input class="form-control" placeholder="name" formControlName="name" [(ngModel)]="regObj.name">
@@ -10,10 +10,10 @@
         <input type="password" class="form-control" placeholder="password" formControlName="password" [(ngModel)]="regObj.password">
       </div>
       <div class="form-group input-group-lg">
-        <input type="password" class="form-control" placeholder="cpassword" formControlName="cpassword" [(ngModel)]="regObj.cpassword">
+        <input type="password" class="form-control" placeholder="Confirm Password" formControlName="password_confirmation" [(ngModel)]="regObj.cpassword">
       </div>
       <div class="form-group">
-        <button type="button" class="btn btn-success btn-block btn-lg">Add User</button>
+        <button type="submit" class="btn btn-success btn-block btn-lg">Add User</button>
         <div class="goBack">
           <button type="button" (click)="goBack()" class="btn btn-success btn-block btn-lg">Back</button>
         </div>

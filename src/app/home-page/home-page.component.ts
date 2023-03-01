@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post/post.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Route, Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserServiceService } from '../user/user-service.service';
 
@@ -25,8 +25,11 @@ export class HomePageComponent implements OnInit {
     location: ''
   };
   
-  constructor(private http: HttpClient, public service: PostService,
-    private router: Router, private fb: FormBuilder, private actRoute: ActivatedRoute,
+  constructor(private http: HttpClient,
+    public service: PostService,
+    private router: Router,
+    private fb: FormBuilder,
+    private actRoute: ActivatedRoute,
     private userService: UserServiceService
     ) { }
 
@@ -36,37 +39,20 @@ export class HomePageComponent implements OnInit {
     this.loadCustomers();
 
     this.form = this.fb.group({
-      name : ['', Validators.required],
-      email : ['', Validators.required],
-      twitter : ['', Validators.required],
-      github: ['', Validators.required],
-      latest_article_published: ['', Validators.required],
-      location: ['', Validators.required]
-    });
+      name : ['',Validators.required],
+      email : ['',Validators.required],
+      twitter : ['',Validators.required],
+      github: ['',Validators.required],
+      latest_article_published: ['',Validators.required],
+      location: ['',Validators.required]
+    })
 
-    // console.log(JSON.parse(localStorage.getItem('token')!));
-    // let token = JSON.parse(localStorage.getItem('token')!);
-    // const headers = new HttpHeaders({
-    //   'Authorization': `Bearer ${token}`
-    // });
     this.userService.me().subscribe((data: any) =>{
       this.userMe = data;
-    } )
-
+    })
   }
 
-  
-
   submitCustomer() {
-    if(this.formObj.email == '' ||
-    this.formObj.email == '' ||
-    this.formObj.email == '' ||
-    this.formObj.email == '' ||
-    this.formObj.email == '' ||
-    this.formObj.email == ''){
-      alert('Input fields are empty')
-      return;
-    }
 
     var formData: any = new FormData();
     formData.append('email', this.form.get('email')?.value);
@@ -81,12 +67,24 @@ export class HomePageComponent implements OnInit {
     .subscribe({
       next: (res) => {
         alert('Customer added!');
+        this.resetThisForm();
         this.entries = this.loadCustomers();
       },
-      error: console.log,
+      error: (err) => {
+        alert('Error while adding customer..');
+      }
     })
-
   }
+
+  resetThisForm(){
+    this.formObj.email = '';
+    this.formObj.name = '';
+    this.formObj.twitter = '';
+    this.formObj.github = '';
+    this.formObj.latest_article_published = '';
+    this.formObj.location = '';
+  }
+
 
   loadCustomers(){
     this.service.getAll()
@@ -102,16 +100,19 @@ export class HomePageComponent implements OnInit {
           alert('Customer deleted!');
           this.entries = this.loadCustomers();
         },
-        error: console.log,
-      })
-      // this.router.navigate(['']);
-      // this.router.navigateByUrl('/login', {skipLocationChange: true}).then(() => this.router.navigate(['']));
+        error: (err) => {
+          alert('Customer deletion error');
+        }
+      });
     }
   }
 
-  logOut(data: any){
-    this.userService.logOutUser(data);
-    localStorage.removeItem('token');
-    this.router.navigate(['']);
+  logOut(){
+    if(window.confirm('Are you sure you want to log out?')){
+      this.userService.logOut();
+      localStorage.removeItem('token');
+      localStorage.removeItem('me');
+      this.router.navigate(['']);
+    }
   }
 }

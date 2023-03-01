@@ -60,7 +60,9 @@ export class UpdateComponent implements OnInit {
         this.entries = this.loadCustomers();
         this.router.navigate(['home']);
       },
-      error: console.log,
+      error: (err) => {
+        alert('Error while adding customer..');
+      }
     })
   }
 

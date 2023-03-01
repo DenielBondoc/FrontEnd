@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
       email : ['', Validators.required],
       password : ['', Validators.required],
     })
-
   }
   
     loginObj: any = {
@@ -43,7 +42,7 @@ export class LoginComponent implements OnInit {
         error: (err) => {
           alert('User does not exist');
         }
-      })
+      });
     }
 
     redirect(){

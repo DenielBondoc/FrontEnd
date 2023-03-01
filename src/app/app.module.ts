@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,9 +13,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { PostService } from './post/post.service';
 import { UpdateComponent } from './update/update.component';
 import { RegisterComponent } from './register/register.component';
-import { DummyComponent } from './dummy/dummy.component';
-
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -25,7 +23,6 @@ import { DummyComponent } from './dummy/dummy.component';
     LoginComponent,
     UpdateComponent,
     RegisterComponent,
-    DummyComponent
   ],
   imports: [
     BrowserModule,
@@ -34,10 +31,11 @@ import { DummyComponent } from './dummy/dummy.component';
     HttpClientModule,
     MatTableModule,
     RouterModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     MatButtonModule,
     FormsModule,
-
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]

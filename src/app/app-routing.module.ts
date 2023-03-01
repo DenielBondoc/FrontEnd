@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-// import { RouterModule, Routes } from '@angular/router';
 import { RouterModule, Routes } from '@angular/router'
-import { DummyComponent } from './dummy/dummy.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { IsAuthenticatedGuard } from './is-authenticated.guard';
 import { LoginComponent } from './login/login.component';
@@ -20,10 +18,6 @@ const routes: Routes = [
     component: HomePageComponent,
     canActivate: [IsAuthenticatedGuard]
   },
-  // {
-  //   path: 'login',
-  //   component: LoginComponent,
-  // },
   {
     path: 'home/update/:id',
     component: UpdateComponent,
@@ -34,11 +28,7 @@ const routes: Routes = [
     component: RegisterComponent,
     canActivate: [SampleGuard]
 
-  },
-  // {
-  //   path: 'dummy',
-  //   component: DummyComponent,
-  // },
+  }
 ];
 
 @NgModule({
