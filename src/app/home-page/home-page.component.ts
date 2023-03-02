@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserServiceService } from '../user/user-service.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddCustomerComponent } from '../Dialog/add-customer/add-customer.component';
 
 @Component({
   selector: 'app-home-page',
@@ -30,7 +32,8 @@ export class HomePageComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private actRoute: ActivatedRoute,
-    private userService: UserServiceService
+    private userService: UserServiceService,
+    public dialog: MatDialog
     ) { }
 
   customers: any[] = [];
@@ -52,47 +55,13 @@ export class HomePageComponent implements OnInit {
     })
   }
 
-  submitCustomer() {
-
-    var formData: any = new FormData();
-    formData.append('email', this.form.get('email')?.value);
-    formData.append('name', this.form.get('name')?.value);
-    formData.append('twitter', this.form.get('twitter')?.value);
-    formData.append('github', this.form.get('github')?.value);
-    formData.append('latest_article_published', this.form.get('latest_article_published')?.value);
-    formData.append('location', this.form.get('location')?.value);
-
-    this.http.post('http://localhost:8001/api/customers', formData)
-    this.service.postCustomer(formData)
-    .subscribe({
-      next: (res) => {
-        alert('Customer added!');
-        this.resetThisForm();
-        this.entries = this.loadCustomers();
-      },
-      error: (err) => {
-        alert('Error while adding customer..');
-      }
-    })
-  }
-
-  resetThisForm(){
-    this.formObj.email = '';
-    this.formObj.name = '';
-    this.formObj.twitter = '';
-    this.formObj.github = '';
-    this.formObj.latest_article_published = '';
-    this.formObj.location = '';
-  }
-
-
   loadCustomers(){
     this.service.getAll()
     .subscribe((customers: any) => {
       this.customers = customers;
     });
   }
-  
+
   deletCustomer(id: number) {
     if(window.confirm('Are you sure you want to delete this customer?')){
       this.service.deletCustomer(id).subscribe({
@@ -115,4 +84,23 @@ export class HomePageComponent implements OnInit {
       this.router.navigate(['']);
     }
   }
+
+  reload(){
+    this.entries = this.loadCustomers();
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AddCustomerComponent, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+      this.reload();
+    });
+  }
+
+
+
+
 }

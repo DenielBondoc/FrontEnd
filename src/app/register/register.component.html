@@ -1,22 +1,55 @@
-<div class="container">
+<div class="container1">
+  <div class="insideContainer">
     <form [formGroup]="formGroup" (ngSubmit)="registerCustomer()">
       <div class="form-group input-group-lg">
-        <input type="email" class="form-control" placeholder="Email" formControlName="email" [(ngModel)]="regObj.email">
+
+        <mat-form-field appearance="fill" class="wid">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="me@example.com" formControlName="email" [(ngModel)]="regObj.email">
+        </mat-form-field>
+
+        <!-- <input type="email" class="form-control" placeholder="Email" formControlName="email" [(ngModel)]="regObj.email"> -->
       </div>
       <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="name" formControlName="name" [(ngModel)]="regObj.name">
+
+        <mat-form-field appearance="fill" class="wid">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="name" formControlName="name" [(ngModel)]="regObj.name">
+        </mat-form-field>
+
+
+        <!-- <input class="form-control" placeholder="name" formControlName="name" [(ngModel)]="regObj.name"> -->
       </div>
       <div class="form-group input-group-lg">
-        <input type="password" class="form-control" placeholder="password" formControlName="password" [(ngModel)]="regObj.password">
+
+        <mat-form-field appearance="fill" class="wid">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="password" formControlName="password" [(ngModel)]="regObj.password">
+        </mat-form-field>
+
+
+        <!-- <input type="password" class="form-control" placeholder="password" formControlName="password" [(ngModel)]="regObj.password"> -->
       </div>
       <div class="form-group input-group-lg">
-        <input type="password" class="form-control" placeholder="Confirm Password" formControlName="password_confirmation" [(ngModel)]="regObj.cpassword">
+
+        <mat-form-field appearance="fill" class="wid">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput type="password" placeholder="Confirm Password" formControlName="password_confirmation" [(ngModel)]="regObj.cpassword">
+        </mat-form-field>
+
+
+        <!-- <input type="password" class="form-control" placeholder="Confirm Password" formControlName="password_confirmation" [(ngModel)]="regObj.cpassword"> -->
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-success btn-block btn-lg">Add User</button>
-        <div class="goBack">
-          <button type="button" (click)="goBack()" class="btn btn-success btn-block btn-lg">Back</button>
+        <div class="buttons">
+          <div class="goBack">
+            <button type="button" (click)="goBack()" mat-raised-button color="warn">Back</button>
+          </div>
+          <div class="addUser">
+            <button type="submit" mat-raised-button color="primary">Add User</button>
+          </div>
         </div>
       </div>
     </form>
+  </div>
   </div>

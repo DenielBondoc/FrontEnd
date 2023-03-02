@@ -19,7 +19,11 @@ export class UpdateComponent implements OnInit {
 
   customers: any[] = [];
 
-  constructor(private http: HttpClient, public service: PostService,private router: Router, private fb: FormBuilder, private actRoute: ActivatedRoute) { }
+  constructor(private http: HttpClient,
+     public service: PostService,
+     private router: Router, 
+     private fb: FormBuilder, 
+     private actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.updateForm = this.fb.group({
@@ -44,7 +48,6 @@ export class UpdateComponent implements OnInit {
     })
   }
 
-
   loadCustomers(){
     this.service.getAll()
     .subscribe((customers: any) => {
@@ -63,10 +66,12 @@ export class UpdateComponent implements OnInit {
       error: (err) => {
         alert('Error while adding customer..');
       }
-    })
+    });
   }
 
   goBack(){
-    this.router.navigate(['home'])
+    if(window.confirm('Are you sure? Any unsaved data will be lost..')){
+      this.router.navigate(['home']);
+    }
   }
 }

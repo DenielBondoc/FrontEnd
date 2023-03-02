@@ -15,6 +15,9 @@ import { UpdateComponent } from './update/update.component';
 import { RegisterComponent } from './register/register.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { AddCustomerComponent } from './Dialog/add-customer/add-customer.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +26,8 @@ import {MatInputModule} from '@angular/material/input';
     LoginComponent,
     UpdateComponent,
     RegisterComponent,
+    AddCustomerComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,8 @@ import {MatInputModule} from '@angular/material/input';
     MatButtonModule,
     FormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]

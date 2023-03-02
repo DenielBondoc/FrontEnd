@@ -1,28 +1,52 @@
-<div class="container">
+<div class="container1">
+  <div class="insideContainer1">
     <form [formGroup]="updateForm" (ngSubmit)="updateCustomer()">
       <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="Email" formControlName="email">
+        <h1>Edit Customer</h1>
+        <mat-form-field class="wid">
+          <input matInput type="email" placeholder="Email" formControlName="email">
+      </mat-form-field>
       </div>
       <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="Name" formControlName="name">
+        <mat-form-field class="wid">
+            <input matInput type="email" placeholder="Name" formControlName="name">
+        </mat-form-field>
+        <!-- <input matInput class="form-control" placeholder="Name" formControlName="name" [(ngModel)]="formObj.name"> -->
       </div>
       <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="Twitter" formControlName="twitter">
+        <mat-form-field class="wid">
+            <input matInput type="email" placeholder="Twitter" formControlName="twitter">
+        </mat-form-field>
+        <!-- <input class="form-control" placeholder="Twitter" formControlName="twitter" [(ngModel)]="formObj.twitter"> -->
       </div>
       <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="Github" formControlName="github">
+        <mat-form-field class="wid">
+            <input matInput type="email" placeholder="Github" formControlName="github">
+        </mat-form-field>
+        <!-- <input class="form-control" placeholder="Github" formControlName="github" [(ngModel)]="formObj.github"> -->
       </div>
       <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="latest_article_published" formControlName="latest_article_published">
+        <mat-form-field class="wid">
+            <input matInput type="email" placeholder="Latest article published" formControlName="latest_article_published">
+        </mat-form-field>
+        <!-- <input class="form-control" placeholder="Latest article published" formControlName="latest_article_published" [(ngModel)]="formObj.latest_article_published"> -->
       </div>
       <div class="form-group input-group-lg">
-        <input class="form-control" placeholder="Location" formControlName="location">
+        <mat-form-field class="wid">
+            <input matInput type="email" placeholder="Location" formControlName="location">
+        </mat-form-field>
+        <!-- <input class="form-control" placeholder="Location" formControlName="location" [(ngModel)]="formObj.location"> -->
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-success btn-block btn-lg">Submit</button>
-        <div class="backButton">
-          <button type="button" (click)="goBack()" class="btn btn-success btn-block btn-lg">Back</button>
+        <div class="buttons">
+          <div class="backButton">
+            <button type="button" (click)="goBack()" mat-raised-button color="warn">Back</button>
+          </div>
+          <div class="submitButton">
+            <button type="submit" mat-raised-button color="primary">Submit</button>
+          </div>
         </div>
       </div>
     </form>
+  </div>
   </div>

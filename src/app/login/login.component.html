@@ -2,17 +2,30 @@
   <div class="container" id="clone_container">
       <div class="border1">
         <form [formGroup]="formGroup" (Submit)="loginUser()">
+          <h1>Login</h1>
+          <hr>
           <div class="form-group input-group-lg">
-            <input type="email" class="form-control" placeholder="Email" formControlName="email" [(ngModel)]="loginObj.email">
+            <mat-form-field appearance="fill" class="wid">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" placeholder="me@example.com" formControlName="email" [(ngModel)]="loginObj.email">
+            </mat-form-field>
+            <!-- <input type="email" class="form-control" placeholder="Email" formControlName="email" [(ngModel)]="loginObj.email"> -->
           </div>
           <div class="form-group input-group-lg">
-            <input type="password" class="form-control" placeholder="password" formControlName="password" [(ngModel)]="loginObj.password">
+
+            <mat-form-field appearance="fill" class="wid">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" placeholder="password" formControlName="password" [(ngModel)]="loginObj.password">
+            </mat-form-field>
+
+
+            <!-- <input type="password" class="form-control" placeholder="password" formControlName="password" [(ngModel)]="loginObj.password"> -->
           </div>
           <div class="form-group">
             <div class="inside">
-              <button type="submit" (click)="loginUser()" class="btn btn-success btn-block btn-lg">Login</button>
+              <button type="submit" (click)="loginUser()" mat-raised-button color="primary">Login</button>
               <div class="registers">
-                <button (click)="redirectToRegister()" class="btn btn-success btn-block btn-lg">Register</button>
+                <button (click)="redirectToRegister()" mat-raised-button color="primary">Register</button>
               </div>
             </div>
           </div>

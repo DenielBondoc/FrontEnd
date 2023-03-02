@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>Add Customer</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="container">
+        <form [formGroup]="form" (ngSubmit)="submitCustomer()">
+            <mat-form-field class="wid" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="me@example.com" formControlName="email" [(ngModel)]="formObj.email">
+            </mat-form-field>
+            <!-- <input matInput type="email" class="form-control" placeholder="Email" formControlName="email" [(ngModel)]="formObj.email"> -->
+          <div class="form-group input-group-lg">
+            <mat-form-field class="wid" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput type="email" placeholder="Name" formControlName="name" [(ngModel)]="formObj.name">
+            </mat-form-field>
+            <!-- <input matInput class="form-control" placeholder="Name" formControlName="name" [(ngModel)]="formObj.name"> -->
+          </div>
+          <div class="form-group input-group-lg">
+            <mat-form-field class="wid" appearance="fill">
+                <mat-label>Twitter</mat-label>
+                <input matInput type="email" placeholder="Twitter" formControlName="twitter" [(ngModel)]="formObj.twitter">
+            </mat-form-field>
+            <!-- <input class="form-control" placeholder="Twitter" formControlName="twitter" [(ngModel)]="formObj.twitter"> -->
+          </div>
+          <div class="form-group input-group-lg">
+            <mat-form-field class="wid" appearance="fill">
+                <mat-label>Github</mat-label>
+                <input matInput type="email" placeholder="Github" formControlName="github" [(ngModel)]="formObj.github">
+            </mat-form-field>
+            <!-- <input class="form-control" placeholder="Github" formControlName="github" [(ngModel)]="formObj.github"> -->
+          </div>
+          <div class="form-group input-group-lg">
+            <mat-form-field class="wid" appearance="fill">
+                <mat-label>Article</mat-label>
+                <input matInput type="email" placeholder="Latest article published" formControlName="latest_article_published" [(ngModel)]="formObj.latest_article_published">
+            </mat-form-field>
+            <!-- <input class="form-control" placeholder="Latest article published" formControlName="latest_article_published" [(ngModel)]="formObj.latest_article_published"> -->
+          </div>
+          <div class="form-group input-group-lg">
+            <mat-form-field class="wid" appearance="fill">
+                <mat-label>Location</mat-label>
+                <input matInput type="email" placeholder="Location" formControlName="location" [(ngModel)]="formObj.location">
+            </mat-form-field>
+            <!-- <input class="form-control" placeholder="Location" formControlName="location" [(ngModel)]="formObj.location"> -->
+          </div>
+        </form>
+      </div>
+</mat-dialog-content>
+<div class="Add">
+    <mat-dialog-actions align="end">
+        <button type="button" mat-button [mat-dialog-close]="'canceled'" mat-raised-button color="warn">Cancel</button>
+        <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+        <form [formGroup]="form" (ngSubmit)="submitCustomer()">
+            <button class="addCD" type="submit" [mat-dialog-close]="'Added'" mat-raised-button color="primary">Add Customer</button>
+        </form>
+      </mat-dialog-actions>
+  <!-- <button mat-dialog-close type="submit" class="btn btn-success btn-block btn-lg">Add Customer</button> -->
+</div>
+<!-- <mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions> -->

@@ -1,17 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
 
 .form-group{
-    margin-bottom: 10px;
-    margin-right: 300px;
-    margin-left: 300px;
     font-family: 'Ubuntu', sans-serif;
 }
 
-.container{
+.container1{
     padding-top: 100px;
+    display: flex;
+    justify-content: center;
     font-family: 'Ubuntu', sans-serif;
 }
 
 .goBack{
-    margin-top: 10px;
+    margin-right: 10px;
+}
+.insideContainer{
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(240, 248, 255, 0.651);
+}
+
+.wid{
+    width: 600px;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
 }

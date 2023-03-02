@@ -1,14 +1,16 @@
 <body>
-  <div class="current_user">
-    <div class="title">
-      <h1>Current User</h1>
+  <div class="above">
+    <div class="current_user">
+      <div class="title">
+        <h1>Current User</h1>
+      </div>
+      <span>Name: {{ userMe.name }}</span>
+      <br>
+      <span>Email: {{ userMe.email }}</span>
+      <button class="logoutbutton" type="button" (click)="logOut()" mat-raised-button color="warn">Log out</button>
     </div>
-    <span>Name: {{ userMe.name }}</span>
-    <br>
-    <span>Email: {{ userMe.email }}</span>
   </div>
   <div class="table1">
-
     <table class="table">
         <thead>
           <tr>
@@ -32,84 +34,17 @@
             <td>{{ customer.github }}</td>
             <td>{{ customer.latest_article_published }}</td>
             <td>{{ customer.location }}</td>
-            <td><button type="button" class="btn btn-danger" (click)="deletCustomer(customer.id)">Delete</button></td>
-            <td><button type="button" class="btn btn-info" [routerLink]="['update', customer.id]">Edit</button></td>         
+            <td><button type="button" mat-raised-button color="warn" (click)="deletCustomer(customer.id)">Delete</button></td>
+            <td><button type="button" mat-raised-button [routerLink]="['update', customer.id]">Edit</button></td>         
           </tr>
         </tbody>
       </table>
-
       <hr>
       <div class="container">
-        <form [formGroup]="form" (ngSubmit)="submitCustomer()">
-          <div class="form-group input-group-lg">
-            <input type="email" class="form-control" placeholder="Email" formControlName="email" [(ngModel)]="formObj.email">
-          </div>
-          <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Name" formControlName="name" [(ngModel)]="formObj.name">
-          </div>
-          <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Twitter" formControlName="twitter" [(ngModel)]="formObj.twitter">
-          </div>
-          <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Github" formControlName="github" [(ngModel)]="formObj.github">
-          </div>
-          <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Latest article published" formControlName="latest_article_published" [(ngModel)]="formObj.latest_article_published">
-          </div>
-          <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Location" formControlName="location" [(ngModel)]="formObj.location">
-          </div>
-          <div class="form-group">
-            <div class="Add">
-              <button type="submit" class="btn btn-success btn-block btn-lg">Add Customer</button>
-            </div>
-            <div class="Logout">
-              <button type="button" (click)="logOut()" class="btn btn-success btn-block btn-lg">Log out</button>
-            </div>
-          </div>
-        </form>
+        <div class="Logout">
+          <button type="submit" (click)="openDialog()" mat-raised-button color="primary" >Add Customer</button>
+        </div>
       </div>
   </div>
-  <!-- <div class="row">
-    <div class="col">
-      <div class="card">
-        <div class="card-content">
-          <span>ID: {{ userMe.id }}</span>
-          <br>
-          <span>Name: {{ userMe.name }}</span>
-          <br>
-          <span>Email: {{ userMe.email }}</span>
-          <br>
-        </div>
-
-      </div>
-
-    </div>
-  </div> -->
       <hr>
-      <!-- <div class="container">
-        <form [formGroup]="updateForm" (ngSubmit)="updateCustomer()">
-          <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Email" formControlName="email">
-          </div>
-          <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Name" formControlName="name">
-          </div>
-          <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Twitter" formControlName="twitter">
-          </div>
-          <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Github" formControlName="github">
-          </div>
-          <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="latest_article_published" formControlName="latest_article_published">
-          </div>
-          <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Location" formControlName="location">
-          </div>
-          <div class="form-group">
-            <button class="btn btn-danger btn-block btn-lg">Submit</button>
-          </div>
-        </form>
-      </div> -->
 </body>
