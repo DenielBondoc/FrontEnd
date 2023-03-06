@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router'
 import { HomePageComponent } from './home-page/home-page.component';
 import { IsAuthenticatedGuard } from './is-authenticated.guard';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { SampleGuard } from './sample.guard';
 import { UpdateComponent } from './update/update.component';
 
@@ -24,10 +23,8 @@ const routes: Routes = [
     canActivate: [IsAuthenticatedGuard]
   },
   {
-    path: 'register',
-    component: RegisterComponent,
-    canActivate: [SampleGuard]
-
+    path: '**',
+    component: LoginComponent,
   }
 ];
 

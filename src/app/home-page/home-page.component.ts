@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../post/post.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserServiceService } from '../user/user-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddCustomerComponent } from '../Dialog/add-customer/add-customer.component';
+import { PostService } from '../services/post/post.service';
+import { UserServiceService } from '../services/user/user-service.service';
+import { Customers } from '../models/customers';
+import { UpdateCustomerComponent } from '../Dialog/update-customer/update-customer.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { Sample } from '../sample/sample';
 
 @Component({
   selector: 'app-home-page',
@@ -17,26 +21,17 @@ export class HomePageComponent implements OnInit {
   form!: FormGroup;
   data!: any;
   userMe: any=[];
+  customers: any[] = [];
 
-  formObj: any = {
-    name : '',
-    email : '',
-    twitter : '',
-    github: '',
-    latest_article_published: '',
-    location: ''
-  };
   
   constructor(private http: HttpClient,
     public service: PostService,
     private router: Router,
     private fb: FormBuilder,
-    private actRoute: ActivatedRoute,
     private userService: UserServiceService,
     public dialog: MatDialog
     ) { }
 
-  customers: any[] = [];
 
   ngOnInit(): void {
     this.loadCustomers();
@@ -55,10 +50,19 @@ export class HomePageComponent implements OnInit {
     })
   }
 
+  displayedColumns: string[] = ['id', 'name', 'email', 'twitter', 'github', 'latest_article_published', 'location', 'edit', 'delete'];
+  dataSource!: MatTableDataSource<any>;
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
   loadCustomers(){
     this.service.getAll()
     .subscribe((customers: any) => {
-      this.customers = customers;
+      this.dataSource = new MatTableDataSource(customers);
     });
   }
 
@@ -91,7 +95,8 @@ export class HomePageComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(AddCustomerComponent, {
-      width: '400px'
+      width: '400px',
+      backdropClass: 'backDropBackground'
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
@@ -99,6 +104,40 @@ export class HomePageComponent implements OnInit {
       this.reload();
     });
   }
+
+  openUpdateDialog(dataKey: Customers) {
+    const dialogRef = this.dialog.open(UpdateCustomerComponent, {
+      width: '400px',
+      backdropClass: 'backDropBackground',
+      data: {
+        dataKey: dataKey
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+      this.reload();
+    });
+  }
+
+  // applyFilter(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

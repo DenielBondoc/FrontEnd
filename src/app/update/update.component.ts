@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { ActivatedRoute, Router } from '@angular/router';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PostService } from '../post/post.service';
+import { PostService } from '../services/post/post.service';
 
 @Component({
   selector: 'app-update',
@@ -35,7 +35,7 @@ export class UpdateComponent implements OnInit {
       location: ['', Validators.required]
     })
 
-    var id = this.actRoute.snapshot.paramMap.get('id');
+    var id = this.actRoute.snapshot.params['id'];
     this.service.getCustomerId(id).subscribe((data) => {
       this.updateForm = this.fb.group({
         name : [data.name],

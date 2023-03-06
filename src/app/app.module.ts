@@ -10,13 +10,15 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
-import { PostService } from './post/post.service';
+import { PostService } from 'src/app/services/post/post.service';
 import { UpdateComponent } from './update/update.component';
-import { RegisterComponent } from './register/register.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { AddCustomerComponent } from './Dialog/add-customer/add-customer.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { RegisterUserComponent } from './Dialog/register-user/register-user.component';
+import { UpdateCustomerComponent } from './Dialog/update-customer/update-customer.component';
+
 
 
 @NgModule({
@@ -25,9 +27,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     HomePageComponent,
     LoginComponent,
     UpdateComponent,
-    RegisterComponent,
     AddCustomerComponent,
-
+    RegisterUserComponent,
+    UpdateCustomerComponent,
   ],
   imports: [
     BrowserModule,

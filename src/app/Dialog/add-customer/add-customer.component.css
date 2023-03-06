@@ -4,3 +4,11 @@
 .wid{
     width: 335px;
 }
+
+.backDropBackground{
+    backdrop-filter: blur(8px);
+}
+
+.container{
+    height: 500px;
+}

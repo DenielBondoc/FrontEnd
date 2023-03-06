@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PostService } from 'src/app/post/post.service';
+import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
   selector: 'app-add-customer',

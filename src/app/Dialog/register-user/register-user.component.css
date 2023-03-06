@@ -5,7 +5,7 @@
 }
 
 .container1{
-    padding-top: 100px;
+    /* padding-top: 100px; */
     display: flex;
     justify-content: center;
     font-family: 'Ubuntu', sans-serif;
@@ -14,17 +14,21 @@
 .goBack{
     margin-right: 10px;
 }
-.insideContainer{
+/* .insideContainer{
     background-color: white;
     padding: 20px;
     border-radius: 20px;
     background-color: rgba(240, 248, 255, 0.651);
-}
+} */
 
 .wid{
-    width: 600px;
+    width: 400px;
 }
 .buttons{
     display: flex;
     justify-content: center;
+}
+h2{
+    font-family: 'Ubuntu', sans-serif;
+
 }

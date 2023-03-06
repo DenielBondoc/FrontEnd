@@ -1,23 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { UserServiceService } from '../user/user-service.service';
+import { UserServiceService } from 'src/app/services/user/user-service.service';
+
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-register-user',
+  templateUrl: './register-user.component.html',
+  styleUrls: ['./register-user.component.css']
 })
+export class RegisterUserComponent implements OnInit {
 
-export class RegisterComponent implements OnInit {
-
-  userEntries!: any;
   formGroup!: FormGroup;
 
   Users: any[] = [];
 
-  constructor(private httpClient: HttpClient, private service: UserServiceService, private fb: FormBuilder, private router: Router) { }
+  constructor(private httpClient: HttpClient,
+    private service: UserServiceService,
+    private fb: FormBuilder,
+    private router: Router,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadUsers();
@@ -53,7 +57,6 @@ export class RegisterComponent implements OnInit {
     .subscribe({
       next: (res) => {
         alert('User Registered!');
-        this.userEntries = this.loadUsers();
         this.router.navigate([''])
       },
       error: (err) => {
@@ -70,6 +73,6 @@ export class RegisterComponent implements OnInit {
   }
 
   goBack(){
-    this.router.navigate([''])
+    this.dialog.closeAll();
   }
 }

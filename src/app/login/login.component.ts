@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { UserServiceService } from '../user/user-service.service';
+import { AddCustomerComponent } from '../Dialog/add-customer/add-customer.component';
+import { RegisterUserComponent } from '../Dialog/register-user/register-user.component';
+import { UserServiceService } from '../services/user/user-service.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +16,7 @@ export class LoginComponent implements OnInit {
   formGroup!: FormGroup;
 
 
-  constructor(private httpClient: HttpClient, private service: UserServiceService, private fb: FormBuilder, private router: Router) { }
+  constructor(private httpClient: HttpClient, private service: UserServiceService, private fb: FormBuilder, private router: Router, public dialog: MatDialog) { }
   
   ngOnInit(): void {
     this.formGroup = this.fb.group({
@@ -51,5 +54,16 @@ export class LoginComponent implements OnInit {
 
     redirectToRegister(){
       this.router.navigate(['register']);
+    }
+
+    openRegisterUserDialog() {
+      const dialogRef = this.dialog.open(RegisterUserComponent, {
+        width: '450px',
+        backdropClass: 'backDropBackground'
+      });
+  
+      dialogRef.afterClosed().subscribe((result: any) => {
+        console.log(`Dialog result: ${result}`);
+      });
     }
 }
