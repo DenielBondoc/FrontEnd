@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { HomePageComponent } from './home-page/home-page.component';
 import { IsAuthenticatedGuard } from './is-authenticated.guard';
 import { LoginComponent } from './login/login.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SampleGuard } from './sample.guard';
 import { UpdateComponent } from './update/update.component';
 
@@ -21,6 +22,10 @@ const routes: Routes = [
     path: 'home/update/:id',
     component: UpdateComponent,
     canActivate: [IsAuthenticatedGuard]
+  },
+  {
+    path: 'reset_password',
+    component: ResetPasswordComponent
   },
   {
     path: '**',

@@ -30,4 +30,8 @@ export class UserServiceService {
     this.httpcClient.post('http://localhost:8001/auth/logout', 
     {headers: new HttpHeaders({'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token')!)})});
   }
+
+  sendPasswordResetLink(data: any){
+    return this.httpcClient.post('http://localhost:8001/auth/sendPasswordResetLink', data);
+  }
 }

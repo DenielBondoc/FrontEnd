@@ -18,6 +18,7 @@ import { AddCustomerComponent } from './Dialog/add-customer/add-customer.compone
 import {MatDialogModule} from '@angular/material/dialog';
 import { RegisterUserComponent } from './Dialog/register-user/register-user.component';
 import { UpdateCustomerComponent } from './Dialog/update-customer/update-customer.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -30,6 +31,7 @@ import { UpdateCustomerComponent } from './Dialog/update-customer/update-custome
     AddCustomerComponent,
     RegisterUserComponent,
     UpdateCustomerComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,
