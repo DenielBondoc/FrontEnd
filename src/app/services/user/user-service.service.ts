@@ -34,4 +34,8 @@ export class UserServiceService {
   sendPasswordResetLink(data: any){
     return this.httpcClient.post('http://localhost:8001/auth/sendPasswordResetLink', data);
   }
+
+  changePassword(data: any){
+    return this.httpcClient.post('http://localhost:8001/auth/resetPassword', data);
+  }
 }

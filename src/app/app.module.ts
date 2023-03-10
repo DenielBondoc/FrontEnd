@@ -18,7 +18,12 @@ import { AddCustomerComponent } from './Dialog/add-customer/add-customer.compone
 import {MatDialogModule} from '@angular/material/dialog';
 import { RegisterUserComponent } from './Dialog/register-user/register-user.component';
 import { UpdateCustomerComponent } from './Dialog/update-customer/update-customer.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ResponseResetPasswordComponent } from './response-reset-password/response-reset-password.component';
+import { ResetPasswordDialogComponent } from './Dialog/reset-password-dialog/reset-password-dialog.component';
+import { DeleteAlertComponent } from './DialogAlerts/delete-alert/delete-alert.component';
+import { CustomerAddedComponent } from './DialogAlerts/customer-added/customer-added.component';
+import { CustomerUpdatedComponent } from './DialogAlerts/customer-updated/customer-updated.component';
+import { ChildOneComponent } from './ChildComponnets/child-one/child-one.component';
 
 
 
@@ -31,7 +36,12 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     AddCustomerComponent,
     RegisterUserComponent,
     UpdateCustomerComponent,
-    ResetPasswordComponent,
+    ResponseResetPasswordComponent,
+    ResetPasswordDialogComponent,
+    DeleteAlertComponent,
+    CustomerAddedComponent,
+    CustomerUpdatedComponent,
+    ChildOneComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,9 +53,9 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     MatButtonModule,
     FormsModule,
-    MatFormFieldModule,
+    MatDialogModule,
     MatInputModule,
-    MatDialogModule
+    MatFormFieldModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@ import { UserServiceService } from '../services/user/user-service.service';
 import { Customers } from '../models/customers';
 import { UpdateCustomerComponent } from '../Dialog/update-customer/update-customer.component';
 import { MatTableDataSource } from '@angular/material/table';
-import { Sample } from '../sample/sample';
+import { DeleteAlertComponent } from '../DialogAlerts/delete-alert/delete-alert.component';
 
 @Component({
   selector: 'app-home-page',
@@ -70,7 +70,7 @@ export class HomePageComponent implements OnInit {
     if(window.confirm('Are you sure you want to delete this customer?')){
       this.service.deletCustomer(id).subscribe({
         next: (res) => {
-          alert('Customer deleted!');
+          this.openDeleteAlertDialog();
           this.entries = this.loadCustomers();
         },
         error: (err) => {
@@ -118,12 +118,20 @@ export class HomePageComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
       this.reload();
     });
+    
   }
 
-  // applyFilter(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
+  openDeleteAlertDialog() {
+    const dialogRef = this.dialog.open(DeleteAlertComponent, {
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+      this.reload();
+    });
+    
+  }
 
 
 

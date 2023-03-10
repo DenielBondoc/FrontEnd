@@ -2,9 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 // import { ActivatedRoute, Router } from '@angular/router';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CustomerUpdatedComponent } from 'src/app/DialogAlerts/customer-updated/customer-updated.component';
 import { PostService } from 'src/app/services/post/post.service';
 // import { PostService } from '../services/post/post.service';
 
@@ -26,6 +27,8 @@ export class UpdateCustomerComponent implements OnInit {
      private http: HttpClient,
      public service: PostService,
      private fb: FormBuilder, 
+     private router: Router,
+     private dialog: MatDialog
      ) {}
 
   ngOnInit(): void {
@@ -50,7 +53,7 @@ export class UpdateCustomerComponent implements OnInit {
     var id = this.customerKey.id;
     this.service.updateCustomer(id, this.updateForm.value).subscribe({
       next: (res) => {
-        alert('Customer Updated!');
+        this.openUpdatedAlertDialog();
         this.entries = this.loadCustomers();
       },
       error: (err) => {
@@ -59,10 +62,21 @@ export class UpdateCustomerComponent implements OnInit {
     });
   }
 
-  // goBack(){
-  //   if(window.confirm('Are you sure? Any unsaved data will be lost..')){
-  //     this.router.navigate(['home']);
-  //   }
-  // }
+  goBack(){
+    if(window.confirm('Are you sure? Any unsaved data will be lost..')){
+      this.router.navigate(['home']);
+    }
+  }
+
+  openUpdatedAlertDialog() {
+    const dialogRef = this.dialog.open(CustomerUpdatedComponent, {
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+    });
+    
+  }
 
 }

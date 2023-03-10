@@ -2,7 +2,9 @@
   <div class="container" id="clone_container">
       <div class="border1">
         <form [formGroup]="formGroup" (Submit)="loginUser()">
-          <h1>Login</h1>
+          <div class="theTitle">
+            <h1>Login</h1>
+          </div>
           <hr>
           <div class="form-group input-group-lg">
             <mat-form-field appearance="fill" class="wid">
@@ -23,13 +25,18 @@
           </div>
           <div class="form-group">
             <div class="inside">
-              <button type="submit" (click)="loginUser()" mat-raised-button color="primary">Login</button>
-              <div class="registers">
-                <button (click)="openRegisterUserDialog()" mat-raised-button color="primary">Register</button>
+              <div>
+                <button type="submit" (click)="loginUser()" mat-raised-button color="primary">Login</button>
               </div>
             </div>
+            <hr>
+            <div class="registers">
+              <span>Don't have an account?</span><a class="RegisterButton" (click)="openRegisterUserDialog()">Sign up</a>
+            </div>
+            <div class="resetButtonmainDiv">
+              <a class="resetButton" style="text-decoration: none;" (click)="openResetPasswordDialog()">Reset password</a>
+            </div>
           </div>
-          <a style="text-decoration: none;" routerLink="reset_password">Reset password</a>
         </form>
       </div>
     </div>

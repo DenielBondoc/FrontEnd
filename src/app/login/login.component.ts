@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddCustomerComponent } from '../Dialog/add-customer/add-customer.component';
 import { RegisterUserComponent } from '../Dialog/register-user/register-user.component';
+import { ResetPasswordDialogComponent } from '../Dialog/reset-password-dialog/reset-password-dialog.component';
 import { UserServiceService } from '../services/user/user-service.service';
 
 @Component({
@@ -58,6 +59,17 @@ export class LoginComponent implements OnInit {
 
     openRegisterUserDialog() {
       const dialogRef = this.dialog.open(RegisterUserComponent, {
+        width: '450px',
+        backdropClass: 'backDropBackground'
+      });
+  
+      dialogRef.afterClosed().subscribe((result: any) => {
+        console.log(`Dialog result: ${result}`);
+      });
+    }
+
+    openResetPasswordDialog() {
+      const dialogRef = this.dialog.open(ResetPasswordDialogComponent, {
         width: '450px',
         backdropClass: 'backDropBackground'
       });

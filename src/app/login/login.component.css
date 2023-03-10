@@ -4,14 +4,14 @@
 #clone_container{
     display: flex;
     justify-content: center;
-    padding-top: 300px;
+    padding-top: 250px;
     font-family: 'Ubuntu', sans-serif;
 }
 
 .border1{
     background-color: rgba(240, 248, 255, 0.651);
-    padding: 30px;
-    border-radius: 20px;
+    padding: 15px;
+    border-radius: 15px;
 }
 
 .form-group{
@@ -20,7 +20,11 @@
 
 .inside{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.inside button{
+    font-size: 20px;
 }
 .wid{
     width: 300px;
@@ -28,4 +32,36 @@
 
 h1{
     font-family: 'Ubuntu', sans-serif;
+    font-size: 40px;
+}
+
+.resetButton{
+    cursor: pointer;
+}
+
+.resetButtonmainDiv{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.theTitle{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(63,81,181);
+    padding-top: 20px;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.RegisterButton{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.registers{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }

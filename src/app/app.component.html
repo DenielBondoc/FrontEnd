@@ -1,1 +1,8 @@
 <router-outlet></router-outlet>
+<h1>Pareng Component</h1>
+<button (click)="userLoggedIn = true">Login</button>
+<button (click)="userLoggedIn = false">Logout</button>
+{{userLoggedIn}}
+<app-child-one #child [loggedIn]="userLoggedIn" (greetEvent)="greet()"></app-child-one>
+{{child.name}}
+<button (click)="child.alertDeniel()">greet</button>

@@ -60,7 +60,7 @@ export class RegisterUserComponent implements OnInit {
         this.router.navigate([''])
       },
       error: (err) => {
-        alert('Error creating new user..');
+        alert('Error creating user \n Possible reasons: \n *Email already exist');
       }
     })
   }

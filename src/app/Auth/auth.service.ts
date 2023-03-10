@@ -13,4 +13,8 @@ export class AuthService {
    isLoggedIn(){
     return localStorage.getItem('token') !== null;
    }
+
+   isRedirect(){
+    return localStorage.getItem('redirect') !== null;
+   }
 }

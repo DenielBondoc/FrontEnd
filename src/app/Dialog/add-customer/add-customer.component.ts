@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { CustomerAddedComponent } from 'src/app/DialogAlerts/customer-added/customer-added.component';
 import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
@@ -12,7 +14,8 @@ export class AddCustomerComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private http: HttpClient,
-    public service: PostService) { }
+    public service: PostService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -27,12 +30,12 @@ export class AddCustomerComponent implements OnInit {
       location: ['',Validators.required]
     })
   }
-
-
+  
+  
   form!: FormGroup;
   entries!: any;
   customers: any[] = [];
-
+  
   formObj: any = {
     name : '',
     email : '',
@@ -41,7 +44,11 @@ export class AddCustomerComponent implements OnInit {
     latest_article_published: '',
     location: ''
   };
-
+  
+  
+    reload(){
+      this.entries = this.loadCustomers();
+    }
 
   submitCustomer() {
 
@@ -57,9 +64,9 @@ export class AddCustomerComponent implements OnInit {
     this.service.postCustomer(formData)
     .subscribe({
       next: (res) => {
-        alert('Customer added!');
+        this.openAddedAlertDialog();
         this.resetThisForm();
-        this.entries = this.loadCustomers();
+        this.reload();
       },
       error: (err) => {
         alert('Error while adding customer..');
@@ -80,6 +87,17 @@ export class AddCustomerComponent implements OnInit {
     this.service.getAll()
     .subscribe((customers: any) => {
       this.customers = customers;
+    });
+  }
+
+  openAddedAlertDialog() {
+    const dialogRef = this.dialog.open(CustomerAddedComponent, {
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+      this.reload();
     });
   }
 
